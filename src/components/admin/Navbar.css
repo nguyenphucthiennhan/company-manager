@@ -1,0 +1,115 @@
+/* Định dạng navbar tổng thể */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+}
+
+/* Logo và thương hiệu */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 24px;
+  margin-right: 8px;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Thanh tìm kiếm */
+.navbar-search {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-search input {
+  padding: 3px 18px;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  outline: none;
+  width: 400px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Các icon và avatar */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.avatar img {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 60px;
+}
+
+@media (max-width: 768px) {
+    /* Hide the search bar */
+    .navbar-search {
+      display: none;
+    }
+  
+    /* Adjust the navbar to center logo */
+    .navbar {
+      justify-content: space-between;
+      padding: 10px;
+    }
+  
+    /* Hamburger menu */
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+    }
+  
+    /* Center logo */
+    .navbar-logo img {
+      margin: 0 auto; /* Center the logo */
+      display: block;
+      height: 24px;
+    }
+  
+    /* Icon section */
+    .navbar-icons {
+      display: flex;
+      align-items: center;
+    }
+  
+    .icon-btn {
+      margin-right: 8px; /* Adjust spacing */
+    }
+
+    .logo {
+        margin-left: 30px;
+    }
+  
+    /* Avatar styles */
+    .avatar img {
+      height: 32px;
+      width: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  }
+  
+  
+  
