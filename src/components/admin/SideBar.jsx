@@ -4,6 +4,7 @@ import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icon
 import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope } from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
 
+
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Sidebar mặc định đóng trên mobile
