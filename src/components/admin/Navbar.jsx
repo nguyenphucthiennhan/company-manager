@@ -12,7 +12,7 @@ const Navbar = () => {
         <input type="text" placeholder="Search..." />
       </div>
       <div className="navbar-icons">
-        <button className="icon-btn sun-icon">☀️</button>
+        <button className="icon-btn sun-icon">☀️</button> 
         <button className="icon-btn bell-icon">🔔</button>
         <div className="avatar">
           <img src={require('../../assets/img/team/40x40/57.webp')} alt="user avatar" />
