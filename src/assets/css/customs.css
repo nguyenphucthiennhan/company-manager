@@ -6,6 +6,7 @@
     border-right: 1px solid #ddd;
     overflow-y: auto;
     position: fixed;
+    top: 73px;
     transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng khi chuyển đổi */
   }
   
@@ -129,4 +130,6 @@
       display: none; /* Ẩn hamburger khi sidebar mở */
     }
   }
-  
+  body {
+    background: #f5f7fa;
+  }

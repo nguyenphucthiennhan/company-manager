@@ -7,6 +7,10 @@
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   font-family: Arial, sans-serif;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 /* Logo và thương hiệu */
