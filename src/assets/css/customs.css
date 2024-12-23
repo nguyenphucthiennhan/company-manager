@@ -130,3 +130,492 @@
     }
   }
   
+
+/* Calendar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #d1d5db;
+  margin-left: 170px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  padding: 5px;
+}
+
+
+/* Radio Group Styling */
+.radio-group {
+  display: flex;        /* Sử dụng flexbox để nằm ngang */
+  flex-direction: row;  /* Hiển thị theo chiều ngang */
+  gap: 20px;            /* Khoảng cách giữa các radio button */
+}
+
+/* Đảm bảo label không có thuộc tính block */
+.radio-group label {
+  display: flex;        /* Cho phép input và text nằm ngang trong label */
+  align-items: center;  /* Căn giữa radio button và text theo chiều dọc */
+  gap: 8px;             /* Khoảng cách giữa radio button và văn bản */
+  margin: 0;            /* Đảm bảo không có margin thừa */
+  margin-bottom: -10px;
+}
+
+
+.date-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sync-button,
+.add-task-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sync-button:hover, 
+.add-task-button:hover {
+  background-color: #2563eb;
+  animation: pulse 1s infinite;
+}
+
+.text-container {
+  background-color: #ccc;
+}
+
+  /* Chỉnh màu nền và viền cho lịch */
+.calendar-container {
+  font-family: Arial, sans-serif;
+  background-color: #e6f7ff; /* Màu nền xanh nhạt */
+  padding: 20px;
+  max-width: 700px;
+  margin-left: 120px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  border: 2px solid #007bff; /* Viền đậm màu xanh dương */
+}
+
+/* Chỉnh màu chữ và độ đậm cho lịch */
+.fc {
+  font-size: 0.9rem;
+  color: #333;
+  margin-left: 170px;
+}
+
+.fc-daygrid-day {
+  background-color: #f0f8ff; /* Nền nhạt cho các ô ngày */
+  border: 1px solid #ccc;
+}
+
+.fc-daygrid-day-number {
+  font-size: 0.9rem;
+  font-weight: bold; /* Chữ đậm hơn */
+  color: #007bff;    /* Màu xanh dương */
+}
+
+/* Chỉnh màu cho toolbar */
+.fc-toolbar {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.fc-toolbar-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Chỉnh màu cho các nút trong toolbar */
+.fc-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.fc-button:hover {
+  background-color: #0056b3;
+}
+  
+
+/* Overlay Background */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Overlay Background */
+.form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Form Container */
+.form-container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Form Title */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Form Group Wrapper */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label Styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Input, Select, and Textarea Styling */
+.form-container input[type="text"],
+.form-container input[type="datetime-local"],
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 14px; /* Increased padding */
+  font-size: 1.1rem; /* Larger font size */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners */
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-container input[type="text"],
+.form-container input[type="datetime-local"],
+.form-container select {
+  height: 40px; /* Uniform height for input fields and select */
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="datetime-local"]:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Increase size for select elements */
+.form-container select {
+  padding: 4px 20px;
+  font-size: 14px;
+}
+
+/* Textarea Customization */
+.form-container textarea {
+  resize: vertical;
+  height: 100px; /* Larger height for textarea */
+}
+
+/* Checkbox Label Styling */
+.form-container input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* Action Buttons */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 16px 24px; /* Increased button size */
+  font-size: 1.2rem; /* Larger font size */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+button[type="button"] {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #e53935;
+  transform: translateY(-2px);
+}
+
+/* Radio Button Group */
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+  color: #444;
+}
+
+input[type="radio"] {
+  margin: 0;
+}
+
+/* bảng event */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  width: 500px;
+  max-width: 90%;
+  padding: 25px; /* Reduced padding for a smaller modal */
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+.modal-container h3 {
+  font-size: 1.6rem; /* Slightly smaller heading */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modal-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.modal-container p strong {
+  color: #222;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Reduced gap between buttons */
+}
+
+.modal-actions button {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 8px 16px; /* Smaller padding */
+  border-radius: 6px;
+  font-size: 0.9rem; /* Smaller text */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-actions button.delete-button {
+  background-color: #f44336;
+}
+
+.modal-actions button:hover {
+  background-color: #2563eb; /* For blue button */
+}
+
+.modal-actions button.delete-button:hover {
+  background-color: #d32f2f; /* For red button */
+}
+
+/* Add a little space between content sections */
+.modal-container .description-section {
+  margin-top: 15px;
+  text-align: left;
+  padding: 0 5px;
+}
+
+.modal-container .description-section p {
+  font-size: 1rem; /* Slightly smaller description text */
+  color: #444;
+  margin: 5px 0;
+}
+
+/* Close button positioning */
+.modal-close-button {
+  position: absolute;
+  top: 10px; /* Adjusted for better alignment */
+  right: 10px; /* Moved to the right edge */
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* Adjusts the top distance */
+  right: 30px; /* Moves it closer to the right edge */
+  background: transparent;
+  border: none;
+  font-size: 1.8rem; /* Size of the "×" symbol */
+  color: #999;  
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #333; /* Darker color when hovered */
+}
+
+.title-calendar{
+  font-size: 0.8em;
+    font-weight: bold;
+    border-right: 2px solid #000;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 15ch; /* Số ký tự hiển thị */
+    animation: typing 3s steps(15) infinite, blink 0.5s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 15ch;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+
+
+.title-date {
+    font-weight: bold;
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #86a8e7, #7f7fd5);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient-move 3s linear infinite;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* animation nút */
+.add-btn {
+ 
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #2563eb; }
+  50% { box-shadow: 0 0 20px #2563eb; }
+  100% { box-shadow: 0 0 5px #2563eb; }
+}
+
+.add-cc {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  transform: translateX(-100%);
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+.tilte-form {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
