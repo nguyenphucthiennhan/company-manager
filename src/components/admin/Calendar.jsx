@@ -97,7 +97,7 @@ const Calendar = () => {
   return (
     <div className="calendar-wrapper">
       <div className="header">
-        <h2 className="title-calendar">Chấm công</h2>
+        <h2 className="title-calendar">Chấm công</h2> 
         <div className="date-display">
           <span>
             <strong className="title-date">Friday | 20 Dec, 2024</strong>
