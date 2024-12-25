@@ -54,13 +54,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         className={`sidebar ${isSidebarOpen ? "open" : "closed"}`} // Thêm lớp 'open' khi sidebar mở
-      >
-        {/* Logo */}
-        <div className="logo mb-4 flex items-center">
-          <span className="logo-icon text-2xl">🔥</span>
-          <span className="logo-text text-lg ml-2">phoenix</span>
-        </div>
-
+      >       
         {/* Menu */}
         <ul className="nav-list space-y-4">
           <li className="nav-item">
@@ -79,7 +73,7 @@ const Sidebar = () => {
                   <Link to="/">E commerce</Link>
                 </li>
                 <li>
-                  <Link to="/">Project management</Link>
+                  <Link to="/project">Project management</Link>
                 </li>
                 <li>
                   <Link to="/">CRM</Link>

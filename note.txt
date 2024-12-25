@@ -1,0 +1,11 @@
+screen:
+- project list card view
+- Project details
+- Create 
+- Profile
+- chấm công, xin nghỉ(calendar)
+- employee list (customer)
+- employee details (customer details)
+- login
+-file:///E:/v1.20.1/v1.20.1/pages/notifications.html
+deadline t2 23/12
