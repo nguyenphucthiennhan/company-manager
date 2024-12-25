@@ -68,6 +68,10 @@
   margin-right: 60px;
 }
 
+.logo {
+  cursor: pointer; /* Thêm dòng này */
+}
+
 @media (max-width: 768px) {
     /* Hide the search bar */
     .navbar-search {
