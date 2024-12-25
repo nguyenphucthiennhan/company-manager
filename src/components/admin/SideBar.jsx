@@ -4,6 +4,7 @@ import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icon
 import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope } from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";  // Import calendar icon
+import { FaPerson } from "react-icons/fa6";
 
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState({});
@@ -123,6 +124,13 @@ const Sidebar = () => {
           <li className="nav-item">
             <Link to="/admin/Calendar" className="nav-link flex items-center">
               <FaCalendarAlt /> <span className="ml-2">Calendar</span>
+            </Link>
+          </li>
+
+           {/* Profile Link */}
+           <li className="nav-item">
+            <Link to="/Profile" className="nav-link flex items-center">
+              <FaPerson /> <span className="ml-2">Profile</span>
             </Link>
           </li>
         </ul>
