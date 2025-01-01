@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope, FaUserEdit } from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
+import { FaCalendarAlt } from "react-icons/fa";  // Import calendar icon
 
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState({});
@@ -54,13 +55,7 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         className={`sidebar ${isSidebarOpen ? "open" : "closed"}`} // Thêm lớp 'open' khi sidebar mở
-      >
-        {/* Logo */}
-        <div className="logo mb-4 flex items-center">
-          <span className="logo-icon text-2xl">🔥</span>
-          <span className="logo-text text-lg ml-2">phoenix</span>
-        </div>
-
+      >       
         {/* Menu */}
         <ul className="nav-list space-y-4">
           <li className="nav-item">
@@ -79,7 +74,7 @@ const Sidebar = () => {
                   <Link to="/">E commerce</Link>
                 </li>
                 <li>
-                  <Link to="/">Project management</Link>
+                  <Link to="/project">Project management</Link>
                 </li>
                 <li>
                   <Link to="/">CRM</Link>
@@ -125,8 +120,14 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/CreateUser" className="nav-link flex items-center">
-              <FaUserEdit /> <span className="ml-2">Create User</span>
+            <Link to="/admin/CreateUser" className="nav-link flex items-center">
+              <FaTag /> <span className="ml-2">Create User</span>
+            </Link>
+          </li>
+          {/* Calendar Link */}
+          <li className="nav-item">
+            <Link to="/admin/Calendar" className="nav-link flex items-center">
+              <FaCalendarAlt /> <span className="ml-2">Calendar</span>
             </Link>
           </li>
         </ul>

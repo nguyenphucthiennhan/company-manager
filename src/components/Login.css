@@ -36,7 +36,7 @@
 /* Nhãn của các trường input */
 .truong {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 1px;
   font-size: 14px;
   color: #555;
   font-weight: 600;
@@ -46,7 +46,7 @@
 .onhapdulieu {
   width: 100%;
   padding: 15px;
-  margin-top: 8px;
+  margin-bottom: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
