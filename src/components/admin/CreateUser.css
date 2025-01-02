@@ -1,0 +1,85 @@
+/* Cấu trúc chung của CreateUser */
+.create-user-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Đảm bảo trang sử dụng hết chiều cao của cửa sổ */
+}
+
+.main-content {
+    display: flex;
+    flex: 1; /* Chiếm toàn bộ không gian còn lại */
+}
+
+.create-user-container {
+    flex: 1;
+    padding: 100px;
+    overflow-y: auto;
+    background-color: #f5f7fa;
+    padding-left: 300px; /* Cân chỉnh form để không bị che khuất bởi Sidebar */
+}
+
+.create-user-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.create-user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Đặt các input thành 2 cột */
+    gap: 20px;
+}
+
+.create-user-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1px; /* Tạo khoảng cách giữa các nhóm input */
+}
+
+.create-user-input {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%; /* Đảm bảo input chiếm toàn bộ chiều rộng của group */
+    background-color: #fff;
+    box-sizing: border-box; /* Đảm bảo padding không làm thay đổi kích thước của input */
+    transition: all 0.3s ease; /* Thêm hiệu ứng mượt mà khi focus vào input */
+}
+
+.create-user-input:focus {
+    border-color: #007bff; /* Màu border khi focus */
+    outline: none; /* Loại bỏ outline mặc định */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Hiệu ứng shadow khi focus */
+}
+
+.create-user-submit-btn {
+    grid-column: span 2; /* Đặt nút submit chiếm toàn bộ chiều ngang */
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng mượt mà cho nút */
+}
+
+.create-user-submit-btn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+.create-user-form-group input {
+    margin-bottom: 12px; /* Khoảng cách giữa các input */
+}
+
+@media (max-width: 768px) {
+    .create-user-form {
+        grid-template-columns: 1fr; /* Chuyển form thành 1 cột trên màn hình nhỏ */
+    }
+
+    .create-user-container {
+        padding-left: 20px; /* Giảm padding khi màn hình nhỏ */
+    }
+}

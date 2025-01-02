@@ -1,7 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope } from "react-icons/fa";
+import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope, FaUserEdit } from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";  // Import calendar icon
 
@@ -118,7 +119,11 @@ const Sidebar = () => {
               <FaTag /> <span className="ml-2">Pricing</span>
             </Link>
           </li>
-
+          <li className="nav-item">
+            <Link to="/admin/CreateUser" className="nav-link flex items-center">
+              <FaTag /> <span className="ml-2">Create User</span>
+            </Link>
+          </li>
           {/* Calendar Link */}
           <li className="nav-item">
             <Link to="/admin/Calendar" className="nav-link flex items-center">
