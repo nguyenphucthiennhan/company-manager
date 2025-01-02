@@ -159,114 +159,69 @@ const Calendar = () => {
         </div>
       )}
 
-      {showForm && (
-        <div className="form-overlay">
-          <div className="form-container">
-            <h2 className="add-cc">Đơn phiếu chấm công</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group radio-group">
-                <label>
-                  <input
-                    type="radio"
-                    name="eventType"
-                    value="Event"
-                    defaultChecked
-                  />
-                  Chấm công
-                </label>
-                <label>
-                  <input type="radio" name="eventType" value="Task" />
-                  Xin nghỉ
-                </label>
-              </div>
+{showForm && (
+  <div className="form-overlay">
+    <div className="form-container">
+      <h2 className="add-cc">Đơn phiếu chấm công</h2>
+      <form onSubmit={handleSubmit}>
+        {/* Entry ID */}
+        <label>
+          Entry ID:
+          <input
+            type="number"
+            name="entryID"
+            value={formData.entryID}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
 
-              <label>
-                Title:
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  required
-                />
-              </label>
+        {/* Employee ID */}
+        <label>
+          Employee ID:
+          <input
+            type="number"
+            name="employeeID"
+            value={formData.employeeID}
+            onChange={handleInputChange}
+          />
+        </label>
 
-              <label>
-                Label:
-                <select
-                  name="label"
-                  value={formData.label}
-                  onChange={handleInputChange}
-                >
-                  <option value="Business">Business</option>
-                  <option value="Personal">Personal</option>
-                </select>
-              </label>
+        {/* Date */}
+        <label>
+          Date:
+          <input
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleInputChange}
+          />
+        </label>
 
-              <label>
-                Starts At:
-                <input
-                  type="datetime-local"
-                  name="startAt"
-                  value={formData.startAt}
-                  onChange={handleInputChange}
-                />
-              </label>
+        {/* Hours Worked */}
+        <label>
+          Hours Worked:
+          <input
+            type="number"
+            step="0.01"
+            name="hoursWorked"
+            value={formData.hoursWorked}
+            onChange={handleInputChange}
+            required
+          />
+        </label>
 
-              <label>
-                Ends At:
-                <input
-                  type="datetime-local"
-                  name="endAt"
-                  value={formData.endAt}
-                  onChange={handleInputChange}
-                />
-              </label>
-
-              <label>
-                Description:
-                <textarea
-                  name="description"
-                  value={formData.description}
-                  onChange={handleInputChange}
-                ></textarea>
-              </label>
-
-              <label>
-                Repetition:
-                <select
-                  name="repetition"
-                  value={formData.repetition}
-                  onChange={handleInputChange}
-                >
-                  <option value="No Repeat">No Repeat</option>
-                  <option value="Daily">Daily</option>
-                  <option value="Weekly">Weekly</option>
-                </select>
-              </label>
-
-              <label>
-                Reminder:
-                <select
-                  name="reminder"
-                  value={formData.reminder}
-                  onChange={handleInputChange}
-                >
-                  <option value="30 minutes earlier">30 minutes earlier</option>
-                  <option value="1 hour earlier">1 hour earlier</option>
-                </select>
-              </label>
-
-              <div className="form-actions">
-                <button type="submit">Save</button>
-                <button type="button" onClick={handleCloseForm}>
-                  Discard
-                </button>
-              </div>
-            </form>
-          </div>
+        <div className="form-actions">
+          <button type="submit">Save</button>
+          <button type="button" onClick={handleCloseForm}>
+            Discard
+          </button>
         </div>
-      )}
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };
