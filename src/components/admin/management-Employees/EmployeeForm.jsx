@@ -2,144 +2,140 @@ import React, { useState, useEffect } from 'react';
 
 const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
-    EmployeeID: '',
-    FirstName: '',
-    LastName: '',
-    DepartmentID: '',
-    Position: '',
-    Email: '',
-    PhoneNumber: '',
-    Address: '',
+    employeeID: '',
+    firstName: '',
+    lastName: '',
+    department: '',
+    position: '',
+    email: '',
+    phoneNumber: '',
+    address: '',
   });
 
-  // Đảm bảo rằng EmployeeForm nhận và cập nhật formData đúng
   useEffect(() => {
     if (employee) {
       setFormData({
-        EmployeeID: employee.EmployeeID,
-        FirstName: employee.FirstName,
-        LastName: employee.LastName,
-        DepartmentID: employee.DepartmentID,
-        Position: employee.Position,
-        Email: employee.Email,
-        PhoneNumber: employee.PhoneNumber,
-        Address: employee.Address,
+        employeeID: employee.employeeID || '',
+        firstName: employee.firstName || '',
+        lastName: employee.lastName || '',
+        department: employee.department?.departmentName || '',
+        position: employee.position || '',
+        email: employee.email || '',
+        phoneNumber: employee.phoneNumber || '',
+        address: employee.address || '',
       });
     }
-  }, [employee]);  // Cập nhật form khi employee thay đổi
+  }, [employee]);
 
-  // Hàm xử lý thay đổi dữ liệu trong form
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
     }));
   };
 
-  // Hàm xử lý submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Kiểm tra nếu dữ liệu hợp lệ trước khi gọi onSubmit
-    if (formData.FirstName && formData.LastName && formData.Email) {
-      onSubmit(formData);  // Gửi dữ liệu lên để cập nhật
-      alert('Dữ liệu đã được lưu thành công!');
-    } else {
-      alert('Vui lòng điền đầy đủ thông tin.');
-    }
+    onSubmit(formData);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="employee-form-container">
-      <h2 className="employee-form__title">Chỉnh sửa nhân viên</h2>
-
-      <div className="employee-form__field">
-        <label className="employee-form__label">Mã nhân viên</label>
+    <form onSubmit={handleSubmit} className="employee-form">
+      <h2 className="form-title">Sửa thông tin nhân viên</h2>
+      <div>
+        <label>Mã nhân viên:</label>
         <input
           type="text"
-          name="EmployeeID"
-          value={formData.EmployeeID}
+          name="employeeID"
+          value={formData.employeeID}
           onChange={handleChange}
-          className="employee-form__input"
-          disabled
+          className="employee-input"
+          readOnly={!!employee}
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Họ</label>
+      <div>
+        <label>Họ:</label>
         <input
           type="text"
-          name="FirstName"
-          value={formData.FirstName}
+          name="firstName"
+          value={formData.firstName}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Tên</label>
+      <div>
+        <label>Tên:</label>
         <input
           type="text"
-          name="LastName"
-          value={formData.LastName}
+          name="lastName"
+          value={formData.lastName}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Phòng ban</label>
+      <div>
+        <label>Phòng ban:</label>
         <input
           type="text"
-          name="DepartmentID"
-          value={formData.DepartmentID}
+          name="department"
+          value={formData.department}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Chức vụ</label>
+      <div>
+        <label>Chức vụ:</label>
         <input
           type="text"
-          name="Position"
-          value={formData.Position}
+          name="position"
+          value={formData.position}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Email</label>
+      <div>
+        <label>Email:</label>
         <input
           type="email"
-          name="Email"
-          value={formData.Email}
+          name="email"
+          value={formData.email}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Số điện thoại</label>
+      <div>
+        <label>Số điện thoại:</label>
         <input
           type="text"
-          name="PhoneNumber"
-          value={formData.PhoneNumber}
+          name="phoneNumber"
+          value={formData.phoneNumber}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-      <div className="employee-form__field">
-        <label className="employee-form__label">Địa chỉ</label>
+      <div>
+        <label>Địa chỉ:</label>
         <input
           type="text"
-          name="Address"
-          value={formData.Address}
+          name="address"
+          value={formData.address}
           onChange={handleChange}
-          className="employee-form__input"
+          className="employee-input"
+          required
         />
       </div>
-
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <button type="submit" className="employee-form__button employee-form__button--submit">
-          Lưu
+      <div className="form-actions">
+        <button type="submit" className="btn btn-primary">
+          {employee ? 'Cập nhật' : 'Thêm mới'}
         </button>
-        <button type="button" onClick={onCancel} className="employee-form__button employee-form__button--cancel">
+        <button type="button" className="btn btn-secondary" onClick={onCancel}>
           Hủy
         </button>
       </div>
