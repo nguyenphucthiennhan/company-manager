@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope, FaUserEdit } from "react-icons/fa";
+import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope} from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
 import { FaCalendarAlt } from "react-icons/fa";  // Import calendar icon
 import { FaPerson } from "react-icons/fa6";

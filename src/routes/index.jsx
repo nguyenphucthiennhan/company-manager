@@ -8,9 +8,6 @@ import CreateUser from "../components/admin/CreateUser";
 import EmployeeManagement from "../views/admin/EmployeeManagement"; // Đảm bảo đường dẫn đúng
 import ProfilesView from "../views/admin/ProfilesView";
 
-import LoginView from "../components/Login";
-import CreateUser from "../components/admin/CreateUser";
-
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
   { path: "/admin/calendar", element: <CalendarView />, name: "Calendar View" },
