@@ -895,97 +895,84 @@ h2.add-cc {
 
 /* form chỉnh sửa employees */
 /* Container của form chỉnh sửa */
-.employee-form-container {
-  margin-top: 20px;
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
+/* Định dạng tổng quan cho form */
+.employee-form {
+  width: 400px;
   margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Tiêu đề của form */
-.employee-form__title {
+/* Tiêu đề form */
+.form-title {
   text-align: center;
-  color: #333;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 30px;
-}
-
-/* Các trường input */
-.employee-form__field {
   margin-bottom: 20px;
-}
-
-.employee-form__label {
-  display: block;
-  font-size: 14px;
   color: #333;
-  margin-bottom: 8px;
-  font-weight: 600;
 }
 
-.employee-form__input {
+/* Định dạng các input */
+.employee-input {
   width: 100%;
-  padding: 12px;
+  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 4px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
 }
 
-.employee-form__input:focus {
+.employee-input:focus {
   border-color: #007bff;
   outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
 }
 
-.employee-form__input:disabled {
-  background-color: #f1f1f1;
-  cursor: not-allowed;
+/* Định dạng nhãn */
+.employee-form label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
 }
 
-/* Nút Lưu và Hủy */
-.employee-form__button {
-  width: 48%;
-  padding: 12px;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+/* Định dạng nút hành động */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
   margin-top: 20px;
+}
+
+.btn {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
   transition: background-color 0.3s ease;
 }
 
-.employee-form__button--submit {
-  background-color: #007bff;
-  color: white;
-}
-
-.employee-form__button--submit:hover {
+.btn-primary:hover {
   background-color: #0056b3;
 }
 
-.employee-form__button--cancel {
+.btn-secondary {
   background-color: #6c757d;
-  color: white;
+  color: #fff;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
-.employee-form__button--cancel:hover {
+.btn-secondary:hover {
   background-color: #5a6268;
-}
-
-/* Responsive: Điều chỉnh form cho màn hình nhỏ */
-@media (max-width: 600px) {
-  .employee-form-container {
-    padding: 20px;
-    margin: 10px;
-  }
-
-  .employee-form__button {
-    width: 100%;
-    margin: 5px 0;
-  }
 }
