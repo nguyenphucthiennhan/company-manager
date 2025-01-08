@@ -18,8 +18,9 @@ const CalendarPage = () => {
         <div className="container text-center content" style={{ flexGrow: 1, padding: "20px" }}>
          
 
-          {/* Gắn Calendar vào đây */}
-          <Calendar />
+        <div className="calendars-container">
+  <Calendar />
+</div>
         </div>
       </div>
     </div>
