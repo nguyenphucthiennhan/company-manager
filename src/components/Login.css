@@ -1,0 +1,98 @@
+/* Toàn bộ container chứa form */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #fff, #c6e7f6); /* Gradient background đẹp */
+}
+
+/* Định dạng form đăng nhập */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Hiệu ứng shadow nhẹ */
+  text-align: left; /* Căn trái */
+  margin: 10px;
+}
+
+/* Tiêu đề */
+.tieude {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Các nhóm input */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Nhãn của các trường input */
+.truong {
+  display: block;
+  margin-bottom: 1px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Input text và password */
+.onhapdulieu {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+/* Khi hover vào input */
+.onhapdulieu:focus {
+  border-color: #00bcd4; /* Màu sắc nổi bật khi focus */
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
+}
+
+/* Nút đăng nhập */
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #5473f3; /* Màu nút nổi bật */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+/* Nút đăng nhập khi hover */
+.login-btn:hover {
+  background-color: #64b0f2;
+}
+
+/* Cập nhật liên kết "Quên mật khẩu" */
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: #5473f3; /* Màu xanh cho liên kết */
+  text-decoration: none; /* Xóa gạch chân mặc định */
+  transition: color 0.3s;
+}
+
+/* Khi hover vào liên kết "Quên mật khẩu" */
+.forgot-password-link:hover {
+  color: #64b0f2; /* Màu thay đổi khi hover */
+}
