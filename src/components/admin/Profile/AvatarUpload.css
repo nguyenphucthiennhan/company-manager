@@ -1,0 +1,41 @@
+.avatar-wrappers {
+    text-align: center;
+  }
+  
+  .avatars {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .avatars-placeholder {
+    width: 100px;
+    height: 100px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .upload-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .upload-btn:hover {
+    background-color: #45a049;
+  }
+  .info-client{
+    margin-bottom: 10px;
+  }
+  

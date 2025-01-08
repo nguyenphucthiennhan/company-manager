@@ -6,6 +6,10 @@ import ProjectCardView from '../views/admin/ProjectCardView';
 import LoginView from "../components/Login";
 import CreateUser from "../components/admin/CreateUser";
 import EmployeeManagement from "../views/admin/EmployeeManagement"; // Đảm bảo đường dẫn đúng
+import ProfilesView from "../views/admin/ProfilesView";
+
+import LoginView from "../components/Login";
+import CreateUser from "../components/admin/CreateUser";
 
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
@@ -14,6 +18,9 @@ const adminRoutes = [
   { path: "/login", element: <LoginView />, name: "Login View" },
   { path: "/admin/createuser", element: <CreateUser />, name: "Create User" },
   { path: "/management-Employees", element: <EmployeeManagement />, name: "Employee Management" },
+  { path: "/profile", element: <ProfilesView />, name: "Profile View"},
+  { path: "/login", element: <LoginView />, name: "Login View" },
+  { path: "/admin/createuser", element: <CreateUser />, name: "Create User" },
 ];
 
 const Routes = () => {
@@ -27,3 +34,4 @@ const Routes = () => {
 };
 
 export default Routes;
+ 
