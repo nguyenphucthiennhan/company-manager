@@ -138,4 +138,3 @@ CREATE TABLE Users (
     Role INT NOT NULL,
     CONSTRAINT FK_Users_Employees FOREIGN KEY (EmployeeId) REFERENCES Employees(EmployeeID)
 );
- --drop table Users
