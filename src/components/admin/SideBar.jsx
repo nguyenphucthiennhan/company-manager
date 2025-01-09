@@ -111,7 +111,7 @@ const Sidebar = () => {
           {/* Pages */}
           <li className="nav-header text-gray-400">PAGES</li>
           <li className="nav-item">
-            <Link to="/" className="nav-link flex items-center">
+            <Link to="/admin/faq" className="nav-link flex items-center">
               <FaQuestionCircle /> <span className="ml-2">Faq</span>
             </Link>
           </li>

@@ -1,0 +1,70 @@
+/* Tổng thể FAQ Accordion */
+.faq-container {
+    font-family: "Arial", sans-serif;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tiêu đề */
+  .faq-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left;
+  }
+  
+  /* Thanh tìm kiếm */
+  .search-bar {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Accordion */
+  .faq-accordion {
+    margin-top: 20px;
+  }
+  
+  .faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .faq-question.active {
+    color: #007bff;
+  }
+  
+  .faq-answer {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* Link hỗ trợ */
+  .support-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .support-link:hover {
+    text-decoration: underline;
+  }
+  
