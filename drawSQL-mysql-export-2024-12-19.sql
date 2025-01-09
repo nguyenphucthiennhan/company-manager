@@ -1,4 +1,4 @@
-CREATE TABLE EmployeeTypes (
+﻿CREATE TABLE EmployeeTypes (
     TypeID INT NOT NULL PRIMARY KEY,
     TypeName NVARCHAR(100) NULL
 );
