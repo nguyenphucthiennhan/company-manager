@@ -7,6 +7,7 @@ import LoginView from "../components/Login";
 import CreateUser from "../components/admin/CreateUser";
 import EmployeeManagement from "../views/admin/EmployeeManagement"; // Đảm bảo đường dẫn đúng
 import ProfilesView from "../views/admin/ProfilesView";
+import ProjectDetailsView from "../views/admin/ProjectDetailsView";
 import Notification from "../views/admin/Notification"; 
 import FAQAccordion from "../views/admin/FAQAccordions"; // Import FAQAccordion
 
@@ -19,6 +20,8 @@ const adminRoutes = [
   { path: "/management-Employees", element: <EmployeeManagement />, name: "Employee Management" },
   { path: "/profile", element: <ProfilesView />, name: "Profile View"},
   { path: "/login", element: <LoginView />, name: "Login View" },
+  { path: "/admin/createuser", element: <CreateUser />, name: "Create User" },
+  { path: "/project-details/1", element: <ProjectDetailsView />, name: "project details" },
   { path: "/admin/notification", element: <Notification />, name: "Notifications" },
   { path: "/admin/faq", element: <FAQAccordion />, name: "FAQ Accordion" }, // Thêm tuyến đường cho FAQAccordion
 ];

@@ -1,0 +1,73 @@
+/* General Styling for Containers */
+.container {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Project Info Card */
+  .project-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .project-card:hover {
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Section Titles */
+  h2, h3 {
+    font-weight: 700;
+    color: #2d3748;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+  
+  /* Select Dropdown */
+  select {
+    background-color: #edf2f7;
+    border: 1px solid #cbd5e0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  select:focus {
+    border-color: #4fd1c5;
+    outline: none;
+  }
+  
+  /* Profile Image */
+  img {
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Progress Bar */
+  .progress-bar {
+    height: 8px;
+    border-radius: 12px;
+    background-color: #e2e8f0;
+    margin-top: 8px;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 12px;
+    background-color: #4fd1c5;
+    width: 72%;
+  }
+  
