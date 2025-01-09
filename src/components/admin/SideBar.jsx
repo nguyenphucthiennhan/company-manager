@@ -110,8 +110,8 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link flex items-center">
-              <FaFolder /> <span className="ml-2">File manager</span>
+            <Link to="/list-leave-request" className="nav-link flex items-center">
+              <FaFolder /> <span className="ml-2">Leave Requests</span>
               <span className="badge bg-red-600 text-white ml-2">NEW</span>
             </Link>
           </li>
