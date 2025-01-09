@@ -121,6 +121,11 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link to="/admin/notification" className="nav-link flex items-center">
+            🔔  <span className="ml-2"> Notifications</span>
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link to="/management-Employees" className="nav-link flex items-center">
               <FaTag /> <span className="ml-2">Employees Management</span>
             </Link>
