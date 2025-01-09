@@ -82,9 +82,9 @@ const EmployeeManagement = () => {
 
           {/* Form để thêm hoặc chỉnh sửa nhân viên */}
           <EmployeeForm
-  employee={editingEmployee} // Truyền thông tin nhân viên nếu đang chỉnh sửa
-  onSubmit={handleSubmit}    // Hàm xử lý submit form
-/>
+            employee={editingEmployee} // Truyền thông tin nhân viên nếu đang chỉnh sửa
+            onSubmit={handleSubmit}    // Hàm xử lý submit form
+          />
 
           {/* Container chứa EmployeeList */}
           <div style={{ marginTop: "20px", marginLeft: "10px" }}>
