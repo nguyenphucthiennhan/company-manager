@@ -10,8 +10,8 @@ import ProfilesView from "../views/admin/ProfilesView";
 import ProjectDetailsView from "../views/admin/ProjectDetailsView";
 import Notification from "../views/admin/Notification"; 
 import FAQAccordion from "../views/admin/FAQAccordions"; 
-import LeaveFormView from "../views/admin/LeaveFormView"; 
-
+import LeaveFormView from "../views/admin/LeaveFormView";
+import LeaveRequestsListView from "../views/admin/LeaveRequestsListView";
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
   { path: "/admin/calendar", element: <CalendarView />, name: "Calendar View" },
@@ -25,7 +25,8 @@ const adminRoutes = [
   { path: "/project-details/1", element: <ProjectDetailsView />, name: "project details" },
   { path: "/admin/notification", element: <Notification />, name: "Notifications" },
   { path: "/admin/faq", element: <FAQAccordion />, name: "FAQ Accordion" }, 
-  { path: "/leave-form", element: <LeaveFormView />, name: "Leave FormForm" }, 
+  { path: "/leave-form", element: <LeaveFormView />, name: "Leave Form" }, 
+  { path: "/list-leave-request", element: <LeaveRequestsListView />, name: "Leave listlist" }, 
 ];
 
 const Routes = () => {
