@@ -7,6 +7,7 @@ import LoginView from "../components/Login";
 import CreateUser from "../components/admin/CreateUser";
 import EmployeeManagement from "../views/admin/EmployeeManagement"; // Đảm bảo đường dẫn đúng
 import ProfilesView from "../views/admin/ProfilesView";
+import ProjectDetailsView from "../views/admin/ProjectDetailsView";
 
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
@@ -18,6 +19,7 @@ const adminRoutes = [
   { path: "/profile", element: <ProfilesView />, name: "Profile View"},
   { path: "/login", element: <LoginView />, name: "Login View" },
   { path: "/admin/createuser", element: <CreateUser />, name: "Create User" },
+  { path: "/project-details/1", element: <ProjectDetailsView />, name: "project details" },
 ];
 
 const Routes = () => {
