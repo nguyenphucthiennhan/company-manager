@@ -111,13 +111,18 @@ const Sidebar = () => {
           {/* Pages */}
           <li className="nav-header text-gray-400">PAGES</li>
           <li className="nav-item">
-            <Link to="/" className="nav-link flex items-center">
+            <Link to="/admin/faq" className="nav-link flex items-center">
               <FaQuestionCircle /> <span className="ml-2">Faq</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/" className="nav-link flex items-center">
               <FaTag /> <span className="ml-2">Pricing</span>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/admin/notification" className="nav-link flex items-center">
+            🔔  <span className="ml-2"> Notifications</span>
             </Link>
           </li>
           <li className="nav-item">
