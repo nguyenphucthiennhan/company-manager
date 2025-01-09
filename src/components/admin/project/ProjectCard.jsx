@@ -2,33 +2,48 @@ import React from "react";
 import { FaDollarSign, FaUserAlt } from "react-icons/fa"; // Thêm các icon
 
 const ProjectCard = ({
-  title,
-  client,
-  budget,
-  progress,
+  projectName,
+  startDate,
+  endDate,
   status,
-  started,
-  deadline,
-  tasks,
-  team,
+  managerID,
+  progress = 50 // Giả định giá trị tiến độ mặc định là 50%
 }) => {
+  // Chuyển đổi định dạng ngày tháng từ chuỗi ISO 8601 (từ API)
+  const formattedStartDate = new Date(startDate).toLocaleDateString();
+  const formattedEndDate = new Date(endDate).toLocaleDateString();
+
+  // Áp dụng màu sắc cho trạng thái
+  let statusClass;
+  switch (status.toUpperCase()) {
+    case "COMPLETED":
+      statusClass = "bg-green-100 text-green-800";
+      break;
+    case "INACTIVE":
+      statusClass = "bg-orange-100 text-orange-800";
+      break;
+    case "CRITICAL":
+      statusClass = "bg-red-100 text-red-800";
+      break;
+    case "ONGOING":
+      statusClass = "bg-blue-100 text-blue-800";
+      break;
+    default:
+      statusClass = "bg-gray-100 text-gray-800";
+  }
+
+  // Viết hoa chữ cái đầu của status và giữ nguyên phần còn lại
+  const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
+
   return (
-    <div className="rounded-lg p-6 border w-full max-w-md" style={{background: "#fff"}}>
+    <div className="rounded-lg p-6 border w-full max-w-md" style={{ background: "#fff" }}>
       {/* Project Header */}
       <div className="flex justify-between items-center mb-4">
-        <h3 className="font-semibold text-xl truncate">{title}</h3>
+        <h3 className="font-semibold text-xl truncate">{projectName}</h3>
         <span
-          className={`text-xs font-medium px-3 py-1 rounded ${
-            status === "COMPLETED"
-              ? "bg-green-100 text-green-800"
-              : status === "INACTIVE"
-              ? "bg-orange-100 text-orange-800"
-              : status === "CRITICAL"
-              ? "bg-red-100 text-red-800"
-              : "bg-blue-100 text-blue-800"
-          }`}
+          className={`text-xs font-medium px-3 py-1 rounded ${statusClass}`}
         >
-          {status}
+          {formattedStatus} {/* Hiển thị status với chữ cái đầu tiên viết hoa */}
         </span>
       </div>
 
@@ -36,11 +51,11 @@ const ProjectCard = ({
       <div className="mb-4">
         <p className="text-sm text-gray-700 mb-1 flex items-center">
           <FaUserAlt className="mr-2" />
-          <span className="font-medium">Client:</span> {client}
+          <span className="font-medium">Manager ID:</span> {managerID}
         </p>
         <p className="text-sm text-gray-700 mb-1 flex items-center">
           <FaDollarSign className="mr-2" />
-          <span className="font-medium">Budget:</span> ${budget.toLocaleString()}
+          <span className="font-medium">Budget:</span> $10,000 {/* Bạn có thể thay thế bằng dữ liệu thật */}
         </p>
       </div>
 
@@ -48,7 +63,7 @@ const ProjectCard = ({
       <div className="mb-4">
         <div className="flex text-sm text-gray-700 mb-1">
           <span>Progress</span>
-          <span>{progress}%</span>
+          <span>{progress}%</span> {/* Bạn có thể thay thế bằng dữ liệu thật */}
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
@@ -59,31 +74,22 @@ const ProjectCard = ({
           ></div>
         </div>
       </div>
-      <p className="mb-22">
-          <span className="font-medium">Started:</span> {started}
-        </p>
-        <p className="text-sm text-gray-700 mb-4">
-          <span className="font-medium">Deadline:</span> {deadline}
-        </p>
+
+      {/* Dates */}
+      <p className="mb-2">
+        <span className="font-medium">Started:</span> {formattedStartDate}
+      </p>
+      <p className="text-sm text-gray-700 mb-4">
+        <span className="font-medium">Deadline:</span> {formattedEndDate}
+      </p>
 
       {/* Team Members */}
       <div className="flex items-center mb-2">
-        <div className="flex -space-x-2">
-          {team.slice(0, 3).map((member, index) => (
-            <img
-              key={index}
-              src={member.avatar}
-              alt={`Team member ${index + 1}`}
-              className="w-10 h-10 rounded-full border border-white"
-            />
-          ))}
-          {team.length > 3 && (
-            <div className="w-10 h-10 bg-gray-300 text-gray-600 flex items-center justify-center rounded-full">
-              +{team.length - 3}
-            </div>
-          )}
+        {/* Đây là phần hiển thị thành viên nhóm, có thể được điều chỉnh nếu có dữ liệu */}
+        <div className="w-10 h-10 bg-gray-300 text-gray-600 flex items-center justify-center rounded-full">
+          {/* +{team.length - 3} */}
         </div>
-        <span className="text-sm font-medium text-gray-600">{tasks} Task</span>
+        <span className="text-sm font-medium text-gray-600">5 Tasks</span> {/* Thay thế nếu có dữ liệu về số lượng công việc */}
       </div>
     </div>
   );
