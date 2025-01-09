@@ -186,3 +186,224 @@ VALUES
 (9, 'Cloud Migration Project', '2022-12-01', '2023-12-01', 'Completed', 2),
 (10, 'Cybersecurity Implementation', '2023-10-01', '2024-03-31', 'Ongoing', 6);
 SET IDENTITY_INSERT Projects OFF;
+
+-- Bật chế độ IDENTITY_INSERT cho bảng Clients
+SET IDENTITY_INSERT Clients ON;
+
+-- Bật chế độ IDENTITY_INSERT cho bảng Clients
+SET IDENTITY_INSERT Clients ON;
+
+-- Chèn dữ liệu vào bảng Clients
+INSERT INTO Clients (ClientID, CompanyName, ContactName, ContactEmail, PhoneNumber)
+VALUES
+(1, 'Tech Solutions', 'John Doe', 'john.doe@techsol.com', '123-456-7890'),
+(2, 'Global Enterprises', 'Jane Smith', 'jane.smith@globent.com', '234-567-8901'),
+(3, 'Innovative Designs', 'Michael Lee', 'michael.lee@innodesign.com', '345-678-9012'),
+(4, 'Marketing Pros', 'Emily Clark', 'emily.clark@marketpros.com', '456-789-0123'),
+(5, 'Creative Solutions', 'Chris Johnson', 'chris.johnson@creativesol.com', '567-890-1234'),
+(6, 'IT Services Inc.', 'David Brown', 'david.brown@itservices.com', '678-901-2345'),
+(7, 'Business Consulting', 'Sarah Davis', 'sarah.davis@bizconsult.com', '789-012-3456'),
+(8, 'Digital Strategies', 'Kevin Moore', 'kevin.moore@digitalstrat.com', '890-123-4567'),
+(9, 'Financial Experts', 'Laura Wilson', 'laura.wilson@finexperts.com', '901-234-5678'),
+(10, 'Engineering Solutions', 'James Taylor', 'james.taylor@engsolutions.com', '012-345-6789');
+
+-- Tắt chế độ IDENTITY_INSERT cho bảng Clients
+SET IDENTITY_INSERT Clients OFF;
+
+
+-- Bật chế độ IDENTITY_INSERT cho bảng ProjectDetails
+SET IDENTITY_INSERT ProjectDetails ON;
+
+-- Chèn dữ liệu vào bảng ProjectDetails
+INSERT INTO ProjectDetails (DetailsId, ClientID, DetailedDescription, EstimatedBudget, ActualBudget, ProjectId, SRS)
+VALUES
+(1, 1, 'This project focuses on managing employee records...', 100000.00, 95000.00, 1, 'System Requirements Specification for Employee Management System'),
+(2, 2, 'This project involves developing a customer relationship...', 200000.00, 190000.00, 2, 'System Requirements Specification for CRM System'),
+(3, 3, 'An e-commerce platform that supports product listings...', 300000.00, 280000.00, 3, 'System Requirements Specification for E-Commerce Platform'),
+(4, 4, 'The project involves designing and developing a mobile app...', 150000.00, 140000.00, 4, 'System Requirements Specification for Mobile App Development'),
+(5, 5, 'Creating an interactive dashboard for visualizing data...', 120000.00, 110000.00, 5, 'System Requirements Specification for Data Analytics Dashboard'),
+(6, 6, 'Website redesign project with a focus on UX...', 100000.00, 95000.00, 6, 'System Requirements Specification for Website Redesign'),
+(7, 7, 'Automating HR tasks including payroll and employee management...', 130000.00, 125000.00, 7, 'System Requirements Specification for HR Automation System'),
+(8, 8, 'Marketing campaign tool for tracking social media campaigns...', 80000.00, 75000.00, 8, 'System Requirements Specification for Marketing Campaign Tool'),
+(9, 9, 'Migrating data and services to the cloud...', 250000.00, 240000.00, 9, 'System Requirements Specification for Cloud Migration Project'),
+(10, 10, 'Implementing cybersecurity infrastructure...', 350000.00, 330000.00, 10, 'System Requirements Specification for Cybersecurity Implementation');
+
+-- Tắt chế độ IDENTITY_INSERT cho bảng ProjectDetails
+SET IDENTITY_INSERT ProjectDetails OFF;
+
+
+
+
+INSERT INTO employee_project (ProjectId, EmployeeId)
+VALUES
+(1, 1),
+(1, 4),
+(2, 7),
+(2, 8),
+(3, 5),
+(3, 7),
+(4, 8),
+(5, 8),
+(6, 3),
+(7, 2);
+
+
+-- Bảng Insurances
+
+INSERT INTO Insurances (EmployeeID, Type, Status, StartDate, EndDate, CoverageAmount, Created_at, Updated_at)
+VALUES
+(1, 'Health', 1, '2023-01-01', '2025-01-01', 50000.00, GETDATE(), GETDATE()),
+(2, 'Life', 1, '2023-03-01', '2025-03-01', 100000.00, GETDATE(), GETDATE()),
+(3, 'Dental', 1, '2023-06-01', '2025-06-01', 30000.00, GETDATE(), GETDATE()),
+(4, 'Health', 1, '2023-09-01', '2025-09-01', 45000.00, GETDATE(), GETDATE()),
+(5, 'Health', 1, '2023-02-01', '2025-02-01', 50000.00, GETDATE(), GETDATE()),
+(6, 'Life', 1, '2023-04-01', '2025-04-01', 120000.00, GETDATE(), GETDATE()),
+(7, 'Health', 1, '2023-07-01', '2025-07-01', 55000.00, GETDATE(), GETDATE()),
+(8, 'Dental', 1, '2023-05-01', '2025-05-01', 35000.00, GETDATE(), GETDATE()),
+(9, 'Health', 1, '2023-08-01', '2025-08-01', 50000.00, GETDATE(), GETDATE()),
+(10, 'Life', 1, '2023-10-01', '2025-10-01', 150000.00, GETDATE(), GETDATE());
+
+
+
+-- Bảng Leaves
+INSERT INTO Leaves (EmployeeID, StartDate, EndDate, Reason, Status, Created_at, Updated_at)
+VALUES
+(1, '2023-05-01', '2023-05-05', 'Vacation', 1, GETDATE(), GETDATE()),
+(2, '2023-06-15', '2023-06-18', 'Sick Leave', 1, GETDATE(), GETDATE()),
+(3, '2023-08-01', '2023-08-03', 'Personal', 1, GETDATE(), GETDATE()),
+(4, '2023-09-01', '2023-09-04', 'Vacation', 1, GETDATE(), GETDATE()),
+(5, '2023-10-10', '2023-10-15', 'Medical', 1, GETDATE(), GETDATE()),
+(6, '2023-12-01', '2023-12-03', 'Sick Leave', 1, GETDATE(), GETDATE()),
+(7, '2023-07-20', '2023-07-22', 'Family Emergency', 1, GETDATE(), GETDATE()),
+(8, '2023-11-01', '2023-11-05', 'Vacation', 1, GETDATE(), GETDATE()),
+(9, '2023-12-10', '2023-12-15', 'Medical', 1, GETDATE(), GETDATE()),
+(10, '2023-11-15', '2023-11-18', 'Sick Leave', 1, GETDATE(), GETDATE());
+
+
+-- Bảng LeaveBalances
+
+INSERT INTO LeaveBalances (EmployeeId, TotalLeaveDays, UsedLeaveDays, UpdatedAt)
+VALUES
+(1, 20, 5, GETDATE()),
+(2, 20, 7, GETDATE()),
+(3, 20, 3, GETDATE()),
+(4, 20, 4, GETDATE()),
+(5, 20, 6, GETDATE()),
+(6, 20, 2, GETDATE()),
+(7, 20, 1, GETDATE()),
+(8, 20, 8, GETDATE()),
+(9, 20, 5, GETDATE()),
+(10, 20, 9, GETDATE());
+
+
+INSERT INTO Users (EmployeeId, Email, PassWord, Role, Created_at, Updated_at)
+VALUES
+(1, 'tu.nguyen@example.com', 'password1', 1, GETDATE(), GETDATE()),
+(2, 'lan.tran@example.com', 'password2', 2, GETDATE(), GETDATE()),
+(3, 'nam.le@example.com', 'password3', 3, GETDATE(), GETDATE()),
+(4, 'mai.pham@example.com', 'password4', 4, GETDATE(), GETDATE()),
+(5, 'tu.vu@example.com', 'password5', 2, GETDATE(), GETDATE()),
+(6, 'lan.hoang@example.com', 'password6', 3, GETDATE(), GETDATE()),
+(7, 'anh.phan@example.com', 'password7', 1, GETDATE(), GETDATE()),
+(8, 'hieu.bui@example.com', 'password8', 3, GETDATE(), GETDATE()),
+(9, 'lan.nguyen@example.com', 'password9', 4, GETDATE(), GETDATE()),
+(10, 'tam.dang@example.com', 'password10', 2, GETDATE(), GETDATE());
+
+
+-- Bật IDENTITY_INSERT cho bảng EmploymentContracts
+SET IDENTITY_INSERT EmploymentContracts ON;
+
+-- Chèn dữ liệu vào bảng EmploymentContracts
+INSERT INTO EmploymentContracts (ContractID, EmployeeID, ContractType, StartDate, EndDate)
+VALUES
+(1, 1, 'Permanent', '2020-01-01', '2025-01-01'),
+(2, 2, 'Permanent', '2020-03-01', '2025-03-01'),
+(3, 3, 'Internship', '2023-06-01', '2024-06-01'),
+(4, 4, 'Contract', '2023-01-01', '2023-12-31'),
+(5, 5, 'Permanent', '2020-05-01', '2025-05-01'),
+(6, 6, 'Permanent', '2021-04-01', '2026-04-01'),
+(7, 7, 'Permanent', '2020-07-01', '2025-07-01'),
+(8, 8, 'Contract', '2023-01-01', '2023-12-31'),
+(9, 9, 'Permanent', '2022-05-01', '2027-05-01'),
+(10, 10, 'Internship', '2023-09-01', '2024-09-01');
+
+-- Tắt IDENTITY_INSERT cho bảng EmploymentContracts
+SET IDENTITY_INSERT EmploymentContracts OFF;
+
+-- Bật IDENTITY_INSERT cho bảng Salaries
+SET IDENTITY_INSERT Salaries ON;
+
+-- Chèn dữ liệu vào bảng Salaries
+INSERT INTO Salaries (EmployeeID, Salary, Bonus, PaymentDate)
+VALUES
+(1, 50000.00, 5000.00, '2023-12-31'),
+(2, 60000.00, 6000.00, '2023-12-31'),
+(3, 30000.00, 3000.00, '2023-12-31'),
+(4, 45000.00, 4500.00, '2023-12-31'),
+(5, 55000.00, 5500.00, '2023-12-31'),
+(6, 50000.00, 5000.00, '2023-12-31'),
+(7, 52000.00, 5200.00, '2023-12-31'),
+(8, 47000.00, 4700.00, '2023-12-31'),
+(9, 48000.00, 4800.00, '2023-12-31'),
+(10, 32000.00, 3200.00, '2023-12-31');
+
+-- Tắt IDENTITY_INSERT cho bảng Salaries
+SET IDENTITY_INSERT Salaries OFF;
+
+-- Bật IDENTITY_INSERT cho bảng PerformanceKPIs
+SET IDENTITY_INSERT PerformanceKPIs ON;
+
+-- Chèn dữ liệu vào bảng PerformanceKPIs
+INSERT INTO PerformanceKPIs (KPIID, EmployeeID, KPIValue, KPIMonth)
+VALUES
+(1, 1, 90.5, '2023-12-01'),
+(2, 2, 88.2, '2023-12-01'),
+(3, 3, 75.3, '2023-12-01'),
+(4, 4, 85.4, '2023-12-01'),
+(5, 5, 92.1, '2023-12-01'),
+(6, 6, 89.7, '2023-12-01'),
+(7, 7, 80.5, '2023-12-01'),
+(8, 8, 87.4, '2023-12-01'),
+(9, 9, 78.8, '2023-12-01'),
+(10, 10, 83.2, '2023-12-01');
+
+-- Tắt IDENTITY_INSERT cho bảng PerformanceKPIs
+SET IDENTITY_INSERT PerformanceKPIs OFF;
+ALTER TABLE Salaries
+ALTER COLUMN EmployeeID1 INT NULL;
+
+
+-- Bật IDENTITY_INSERT cho bảng TimeTracking
+SET IDENTITY_INSERT TimeTracking ON;
+
+-- Chèn dữ liệu vào bảng TimeTracking
+INSERT INTO TimeTracking (EntryID, EmployeeID, Date, HoursWorked)
+VALUES
+(1, 1, '2023-12-01', 8.0),
+(2, 2, '2023-12-01', 7.5),
+(3, 3, '2023-12-01', 6.5),
+(4, 4, '2023-12-01', 8.0),
+(5, 5, '2023-12-01', 7.0),
+(6, 6, '2023-12-01', 8.0),
+(7, 7, '2023-12-01', 8.0),
+(8, 8, '2023-12-01', 7.5),
+(9, 9, '2023-12-01', 6.0),
+(10, 10, '2023-12-01', 8.0);
+
+-- Tắt IDENTITY_INSERT cho bảng TimeTracking
+SET IDENTITY_INSERT TimeTracking OFF;
+
+
+-- Bảng employee_project
+INSERT INTO employee_project (ProjectId, EmployeeId)
+VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(2, 4),
+(3, 5),
+(4, 6),
+(5, 7),
+(5, 8),
+(6, 9),
+(6, 10);

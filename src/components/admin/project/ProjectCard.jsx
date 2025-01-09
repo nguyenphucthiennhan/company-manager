@@ -1,7 +1,9 @@
 import React from "react";
 import { FaDollarSign, FaUserAlt } from "react-icons/fa"; // Thêm các icon
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 
 const ProjectCard = ({
+  projectId, // Add projectId as prop for navigation
   projectName,
   startDate,
   endDate,
@@ -9,6 +11,8 @@ const ProjectCard = ({
   managerID,
   progress = 50 // Giả định giá trị tiến độ mặc định là 50%
 }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   // Chuyển đổi định dạng ngày tháng từ chuỗi ISO 8601 (từ API)
   const formattedStartDate = new Date(startDate).toLocaleDateString();
   const formattedEndDate = new Date(endDate).toLocaleDateString();
@@ -35,8 +39,17 @@ const ProjectCard = ({
   // Viết hoa chữ cái đầu của status và giữ nguyên phần còn lại
   const formattedStatus = status.charAt(0).toUpperCase() + status.slice(1).toLowerCase();
 
+  const handleCardClick = () => {
+    // Navigate to the project detail page
+    navigate(`/project-details/${projectId}`); // Replace with your detail route
+  };
+
   return (
-    <div className="rounded-lg p-6 border w-full max-w-md" style={{ background: "#fff" }}>
+    <div
+      className="rounded-lg p-6 border w-full max-w-md cursor-pointer" 
+      style={{ background: "#fff" }}
+      onClick={handleCardClick} // Add onClick handler to navigate to the detail page
+    >
       {/* Project Header */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-xl truncate">{projectName}</h3>
@@ -67,9 +80,7 @@ const ProjectCard = ({
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">
           <div
-            className={`h-2 rounded-full ${
-              progress === 100 ? "bg-green-500" : "bg-blue-500"
-            }`}
+            className={`h-2 rounded-full ${progress === 100 ? "bg-green-500" : "bg-blue-500"}`}
             style={{ width: `${progress}%` }}
           ></div>
         </div>
