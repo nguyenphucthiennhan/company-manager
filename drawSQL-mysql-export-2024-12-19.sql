@@ -4,7 +4,7 @@ CREATE TABLE EmployeeTypes (
 );
 
 CREATE TABLE Departments (
-    DepartmentID INT NOT NULL PRIMARY KEY,
+    DepartmentID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     DepartmentName NVARCHAR(100) NULL,
     Description NVARCHAR(MAX) NULL,
     ActiveFrom DATE NULL,
@@ -138,12 +138,24 @@ CREATE TABLE Users (
     Role INT NOT NULL,
     CONSTRAINT FK_Users_Employees FOREIGN KEY (EmployeeId) REFERENCES Employees(EmployeeID)
 );
-INSERT INTO Departments (DepartmentID, DepartmentName, Description, ActiveFrom, ActiveTo)
-VALUES
-(1, 'IT Department', 'Handles all IT-related tasks', '2020-01-01', '2025-01-01'),
-(2, 'HR Department', 'Handles human resources and employee welfare', '2020-01-01', '2025-01-01'),
-(3, 'Marketing Department', 'Handles marketing and client relations', '2020-01-01', '2025-01-01');
 
+INSERT INTO Departments (DepartmentName, Description, ActiveFrom, ActiveTo)
+VALUES
+('IT Department', 'Handles all IT-related tasks', '2020-01-01', '2025-01-01'),
+('HR Department', 'Handles human resources and employee welfare', '2020-01-01', '2025-01-01'),
+('Marketing Department', 'Handles marketing and client relations', '2020-01-01', '2025-01-01');
+
+SET IDENTITY_INSERT EmployeeTypes ON;
+INSERT INTO EmployeeTypes (TypeID, TypeName)
+VALUES
+(1, 'Full-Time'),
+(2, 'Part-Time'),
+(3, 'Intern'),
+(4, 'Contract');
+SET IDENTITY_INSERT EmployeeTypes OFF;
+
+
+SET IDENTITY_INSERT Employees ON;
 
 INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentID, Position, Email, PhoneNumber, TypeID, DayOfBirth, Address)
 VALUES
@@ -158,3 +170,19 @@ VALUES
 (9, 'Nguyen', 'Thi Lan', 1, 'Customer Support', 'lan.nguyen@example.com', '0912345686', 1, '1993-05-30', 'Hanoi, Vietnam'),
 (10, 'Dang', 'Minh Tam', 3, 'Business Analyst', 'tam.dang@example.com', '0912345687', 3, '1995-02-22', 'Hanoi, Vietnam');
 
+SET IDENTITY_INSERT Employees OFF;
+
+SET IDENTITY_INSERT Projects ON;
+INSERT INTO Projects (ProjectId, ProjectName, StartDate, EndDate, Status, ManagerID)
+VALUES
+(1, 'Employee Management System', '2023-01-01', '2023-06-30', 'Completed', 2),
+(2, 'Customer Relationship Management', '2023-03-15', '2023-10-15', 'Ongoing', 7),
+(3, 'E-Commerce Platform', '2022-11-01', '2023-05-31', 'Completed', 5),
+(4, 'Mobile App Development', '2024-01-01', '2024-12-31', 'Planning', 8),
+(5, 'Data Analytics Dashboard', '2023-05-01', '2023-12-31', 'Ongoing', 8),
+(6, 'Website Redesign', '2023-09-01', '2024-02-28', 'Ongoing', 3),
+(7, 'HR Automation System', '2023-06-01', '2023-12-15', 'Completed', 4),
+(8, 'Marketing Campaign Tool', '2023-07-01', '2024-01-31', 'Ongoing', 5),
+(9, 'Cloud Migration Project', '2022-12-01', '2023-12-01', 'Completed', 2),
+(10, 'Cybersecurity Implementation', '2023-10-01', '2024-03-31', 'Ongoing', 6);
+SET IDENTITY_INSERT Projects OFF;
