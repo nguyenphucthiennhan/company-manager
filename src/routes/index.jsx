@@ -5,11 +5,10 @@ import CalendarView from "../views/admin/CalendarView";
 import ProjectCardView from '../views/admin/ProjectCardView';
 import LoginView from "../components/Login";
 import CreateUser from "../components/admin/CreateUser";
-import EmployeeManagement from "../views/admin/EmployeeManagement"; // Đảm bảo đường dẫn đúng
+import EmployeeManagement from "../views/admin/EmployeeManagement";
 import ProfilesView from "../views/admin/ProfilesView";
 import Notification from "../views/admin/Notification"; 
 import FAQAccordion from "../views/admin/FAQAccordions"; // Import FAQAccordion
-import ProjectDetailsView from "../views/admin/ProjectDetailsView";
 
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
@@ -22,8 +21,6 @@ const adminRoutes = [
   { path: "/login", element: <LoginView />, name: "Login View" },
   { path: "/admin/notification", element: <Notification />, name: "Notifications" },
   { path: "/admin/faq", element: <FAQAccordion />, name: "FAQ Accordion" }, // Thêm tuyến đường cho FAQAccordion
-  { path: "/admin/createuser", element: <CreateUser />, name: "Create User" },
-  { path: "/project-details/1", element: <ProjectDetailsView />, name: "project details" },
 ];
 
 const Routes = () => {

@@ -1,11 +1,21 @@
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FiHome, FiChevronDown, FiChevronRight, FiChevronLeft } from "react-icons/fi";
-import { FaShoppingCart, FaFolder, FaQuestionCircle, FaTag, FaEnvelope} from "react-icons/fa";
+import {
+  FiHome,
+  FiChevronDown,
+  FiChevronRight,
+  FiChevronLeft,
+} from "react-icons/fi";
+import {
+  FaShoppingCart,
+  FaFolder,
+  FaQuestionCircle,
+  FaTag,
+  FaEnvelope,
+} from "react-icons/fa";
 import { IoIosChatbubbles } from "react-icons/io";
-import { FaCalendarAlt } from "react-icons/fa";  // Import calendar icon
-import { FaPerson } from "react-icons/fa6";
+import { FaCalendarAlt } from "react-icons/fa"; // Import calendar icon
+import { FaUser } from "react-icons/fa"; // Corrected from FaPerson
 
 const Sidebar = () => {
   const [openMenus, setOpenMenus] = useState({});
@@ -54,9 +64,7 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div
-        className={`sidebar ${isSidebarOpen ? "open" : "closed"}`} // Thêm lớp 'open' khi sidebar mở
-      >       
+      <div className={`sidebar ${isSidebarOpen ? "open" : "closed"}`}>
         {/* Menu */}
         <ul className="nav-list space-y-4">
           <li className="nav-item">
@@ -116,13 +124,13 @@ const Sidebar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="/" className="nav-link flex items-center">
-              <FaTag /> <span className="ml-2">Pricing</span>
+            <Link to="/leave-form" className="nav-link flex items-center">
+              <FaTag /> <span className="ml-2">Leave</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link to="/admin/notification" className="nav-link flex items-center">
-            🔔  <span className="ml-2"> Notifications</span>
+              🔔 <span className="ml-2"> Notifications</span>
             </Link>
           </li>
           <li className="nav-item">
@@ -142,10 +150,10 @@ const Sidebar = () => {
             </Link>
           </li>
 
-           {/* Profile Link */}
-           <li className="nav-item">
+          {/* Profile Link */}
+          <li className="nav-item">
             <Link to="/Profile" className="nav-link flex items-center">
-              <FaPerson /> <span className="ml-2">Profile</span>
+              <FaUser /> <span className="ml-2">Profile</span>
             </Link>
           </li>
         </ul>
@@ -153,11 +161,8 @@ const Sidebar = () => {
 
       {/* Nút đóng sidebar trên di động */}
       {isSidebarOpen && (
-        <div
-          className="close-sidebar md:hidden"
-          onClick={toggleSidebar}
-        >
-          <FiChevronLeft size={30} /> {/* Nút đóng sidebar với biểu tượng chevron */}
+        <div className="close-sidebar md:hidden" onClick={toggleSidebar}>
+          <FiChevronLeft size={30} />
         </div>
       )}
     </div>
