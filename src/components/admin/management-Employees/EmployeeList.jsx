@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EmployeeForm from './EmployeeForm';
-
+import API_PATH from '../../common/API_PATH';
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
@@ -16,9 +16,9 @@ const EmployeeList = () => {
   const fetchEmployees = () => {
     setLoading(true);
     axios
-      .get('http://localhost:5238/api/employees')
+      .post(API_PATH()+'Employeeslist')
       .then((response) => {
-        setEmployees(response.data);
+        setEmployees(response.data.$values); // Make sure the employees are inside `$values` property
       })
       .catch((error) => {
         setError('Không thể tải danh sách nhân viên. Vui lòng thử lại.');
@@ -43,7 +43,7 @@ const EmployeeList = () => {
       axios
         .delete(`http://localhost:5238/api/employees/${employeeID}`)
         .then(() => {
-          setEmployees(employees.filter((employee) => employee.employeeID !== employeeID));
+          setEmployees(employees.filter((employee) => employee.employeeId !== employeeID));
         })
         .catch((error) => {
           console.error('Lỗi xóa nhân viên:', error);  // Log chi tiết lỗi
@@ -59,16 +59,16 @@ const EmployeeList = () => {
     console.log('Dữ liệu gửi đi:', employee);  // Kiểm tra dữ liệu
 
     setSubmitting(true);
-    const apiCall = employee.employeeID
-      ? axios.put(`http://localhost:5238/api/employees/${employee.employeeID}`, employee)
+    const apiCall = employee.employeeId
+      ? axios.put(`http://localhost:5238/api/employees/${employee.employeeId}`, employee)
       : axios.post('http://localhost:5238/api/employees', employee);
 
     apiCall
       .then((response) => {
-        if (employee.employeeID) {
+        if (employee.employeeId) {
           setEmployees(
             employees.map((emp) =>
-              emp.employeeID === employee.employeeID ? response.data : emp
+              emp.employeeId === employee.employeeId ? response.data : emp
             )
           );
         } else {
@@ -119,8 +119,8 @@ const EmployeeList = () => {
           </thead>
           <tbody>
             {employees.map((employee) => (
-              <tr key={employee.employeeID}>
-                <td>{employee.employeeID}</td>
+              <tr key={employee.employeeId}>
+                <td>{employee.employeeId}</td>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.department?.departmentName || 'Không có'}</td>
@@ -137,7 +137,7 @@ const EmployeeList = () => {
                   </button>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(employee.employeeID)}
+                    onClick={() => handleDelete(employee.employeeId)}
                     disabled={submitting}
                   >
                     Xóa
