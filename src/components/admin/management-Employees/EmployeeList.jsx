@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import EmployeeForm from './EmployeeForm';
 import API_PATH from '../../common/API_PATH';
+
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [submitting, setSubmitting] = useState(false); // Trạng thái gửi dữ liệu
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     fetchEmployees();
@@ -16,13 +17,13 @@ const EmployeeList = () => {
   const fetchEmployees = () => {
     setLoading(true);
     axios
-      .post(API_PATH()+'Employeeslist')
+      .post(API_PATH() + 'Employeeslist')
       .then((response) => {
-        setEmployees(response.data.$values); // Make sure the employees are inside `$values` property
+        setEmployees(response.data.$values); // Make sure employees are inside $values property
       })
       .catch((error) => {
         setError('Không thể tải danh sách nhân viên. Vui lòng thử lại.');
-        console.error('Lỗi tải danh sách nhân viên:', error);  // Log chi tiết lỗi
+        console.error('Lỗi tải danh sách nhân viên:', error);
       })
       .finally(() => {
         setLoading(false);
@@ -41,12 +42,12 @@ const EmployeeList = () => {
     if (window.confirm('Bạn có chắc chắn muốn xóa nhân viên này?')) {
       setSubmitting(true);
       axios
-        .delete(`http://localhost:5238/api/employees/${employeeID}`)
+        .delete(`http://localhost:5062/Home/EmployeesList/${employeeID}`)
         .then(() => {
           setEmployees(employees.filter((employee) => employee.employeeId !== employeeID));
         })
         .catch((error) => {
-          console.error('Lỗi xóa nhân viên:', error);  // Log chi tiết lỗi
+          console.error('Lỗi xóa nhân viên:', error);
           alert('Không thể xóa nhân viên. Vui lòng thử lại.');
         })
         .finally(() => {
@@ -56,12 +57,10 @@ const EmployeeList = () => {
   };
 
   const handleSubmit = (employee) => {
-    console.log('Dữ liệu gửi đi:', employee);  // Kiểm tra dữ liệu
-
     setSubmitting(true);
     const apiCall = employee.employeeId
-      ? axios.put(`http://localhost:5238/api/employees/${employee.employeeId}`, employee)
-      : axios.post('http://localhost:5238/api/employees', employee);
+      ? axios.put(`http://localhost:5062/Home/EmployeesList/${employee.employeeId}`, employee)
+      : axios.post('http://localhost:5062/Home/EmployeesList', employee);
 
     apiCall
       .then((response) => {
@@ -77,19 +76,8 @@ const EmployeeList = () => {
         setSelectedEmployee(null);
       })
       .catch((error) => {
-        if (error.response) {
-          // Lỗi trả về từ API (ví dụ: 400, 500)
-          console.error('Lỗi từ server:', error.response.data);
-          alert(`Lỗi từ server: ${error.response.data.message || 'Không thể thêm hoặc cập nhật nhân viên. Vui lòng thử lại.'}`);
-        } else if (error.request) {
-          // Lỗi không nhận được phản hồi từ API
-          console.error('Không nhận được phản hồi từ server:', error.request);
-          alert('Không nhận được phản hồi từ server. Vui lòng thử lại.');
-        } else {
-          // Lỗi khác
-          console.error('Lỗi không xác định:', error.message);
-          alert('Không thể thêm hoặc cập nhật nhân viên. Vui lòng thử lại.');
-        }
+        console.error('Lỗi từ server:', error.response?.data);
+        alert('Không thể thêm hoặc cập nhật nhân viên. Vui lòng thử lại.');
       })
       .finally(() => {
         setSubmitting(false);
@@ -97,7 +85,7 @@ const EmployeeList = () => {
   };
 
   const renderTable = () => {
-    if (loading) return <p>Đang tải danh sách nhân viên...</p>;
+    if (loading) return <div className="loading-spinner">Đang tải danh sách nhân viên...</div>;
     if (error) return <p className="text-danger">{error}</p>;
     if (employees.length === 0) return <p>Không có nhân viên nào trong danh sách.</p>;
 
@@ -113,6 +101,10 @@ const EmployeeList = () => {
               <th>Chức vụ</th>
               <th>Email</th>
               <th>Số điện thoại</th>
+              <th>Ngày sinh</th>
+              <th>Giới tính</th>
+              <th>Ngày gia nhập</th>
+              <th>Quốc tịch</th>
               <th>Địa chỉ</th>
               <th>Hành động</th>
             </tr>
@@ -127,6 +119,10 @@ const EmployeeList = () => {
                 <td>{employee.position}</td>
                 <td>{employee.email}</td>
                 <td>{employee.phoneNumber}</td>
+                <td>{employee.dayOfBirth}</td>
+                <td>{employee.gender}</td>
+                <td>{employee.joiningDate}</td>
+                <td>{employee.nationality}</td>
                 <td>{employee.address}</td>
                 <td>
                   <button
