@@ -20,19 +20,19 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
   });
 
   const [departments, setDepartments] = useState([]);
-  const [employeeTypes, setEmployeeTypes] = useState([]); // State for employee types
+  const [employeeTypes, setEmployeeTypes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Lấy danh sách phòng ban từ API
+  // Fetch departments and employee types
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
         const response = await fetch(`${API_PATH()}DepartmentList`);
         const data = await response.json();
         if (data && Array.isArray(data.$values)) {
-          setDepartments(data.$values); // Cập nhật state với danh sách phòng ban
+          setDepartments(data.$values);
         } else {
-          console.error('Dữ liệu phòng ban không hợp lệ:', data);
+          console.error('Invalid department data:', data);
         }
       } catch (error) {
         console.error('Error fetching departments:', error);
@@ -41,12 +41,12 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
 
     const fetchEmployeeTypes = async () => {
       try {
-        const response = await fetch(`${API_PATH()}EmployeeTypesList`);
+        const response = await fetch(`${API_PATH()}EmployeeTypeList`);
         const data = await response.json();
         if (data && Array.isArray(data.$values)) {
-          setEmployeeTypes(data.$values); // Cập nhật state với danh sách loại nhân viên
+          setEmployeeTypes(data.$values);
         } else {
-          console.error('Dữ liệu loại nhân viên không hợp lệ:', data);
+          console.error('Invalid employee type data:', data);
         }
       } catch (error) {
         console.error('Error fetching employee types:', error);
@@ -55,31 +55,31 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
 
     fetchDepartments();
     fetchEmployeeTypes();
-    setLoading(false); // Thay đổi trạng thái loading sau khi dữ liệu đã được tải xong
+    setLoading(false); // Set loading to false after data is fetched
   }, []);
 
-  // Khi có dữ liệu employee, cập nhật form
+  // Update formData when employee prop changes
   useEffect(() => {
     if (employee) {
       setFormData({
         employeeID: employee.employeeID || '',
         firstName: employee.firstName || '',
         lastName: employee.lastName || '',
-        departmentID: employee.department?.departmentID || '',
+        departmentID: employee.department?.departmentId || '',
         position: employee.position || '',
         email: employee.email || '',
         phoneNumber: employee.phoneNumber || '',
         address: employee.address || '',
         dayOfBirth: employee.dayOfBirth || '',
         gender: employee.gender || '',
-        typeID: employee.typeID || '',
+        typeID: employee.typeID || '', // Đặt đúng giá trị loại nhân viên
         joiningDate: employee.joiningDate || '',
         nationality: employee.nationality || '',
       });
     }
   }, [employee]);
 
-  // Xử lý thay đổi input
+  // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -88,7 +88,7 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
     }));
   };
 
-  // Xử lý submit form
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedData = {
@@ -154,15 +154,11 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
                 required
               >
                 <option value="">Chọn phòng ban</option>
-                {departments.length > 0 ? (
-                  departments.map((dept) => (
-                    <option key={dept.departmentId} value={dept.departmentId}>
-                      {dept.departmentName}
-                    </option>
-                  ))
-                ) : (
-                  <option value="">Không có phòng ban</option>
-                )}
+                {departments.map((dept) => (
+                  <option key={dept.departmentId} value={dept.departmentId}>
+                    {dept.departmentName}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -243,26 +239,22 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
             </div>
 
             <div className="form-group">
-              <label>Loại nhân viên:</label>
-              <select
-                name="typeID"
-                value={formData.typeID}
-                onChange={handleChange}
-                className="form-control"
-                required
-              >
-                <option value="">Chọn loại nhân viên</option>
-                {employeeTypes.length > 0 ? (
-                  employeeTypes.map((type) => (
-                    <option key={type.typeID} value={type.typeID}>
-                      {type.typeName}
-                    </option>
-                  ))
-                ) : (
-                  <option value="">Không có loại nhân viên</option>
-                )}
-              </select>
-            </div>
+  <label>Loại nhân viên:</label>
+  <select
+    name="typeID"
+    value={formData.typeID} // Hiển thị giá trị typeID từ formData
+    onChange={handleChange}
+    className="form-control"
+    required
+  >
+    <option value="">Chọn loại nhân viên</option>
+    {employeeTypes.map((type) => (
+      <option key={type.typeId} value={type.typeId}>
+        {type.typeName}
+      </option>
+    ))}
+  </select>
+</div>
 
             <div className="form-group">
               <label>Ngày vào làm:</label>

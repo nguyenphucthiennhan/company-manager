@@ -14,74 +14,36 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
-  const fetchEmployees = () => {
+  const fetchEmployees = async () => {
     setLoading(true);
-    axios
-      .post(API_PATH() + 'Employeeslist')
-      .then((response) => {
-        setEmployees(response.data.$values); // Make sure employees are inside $values property
-      })
-      .catch((error) => {
-        setError('Không thể tải danh sách nhân viên. Vui lòng thử lại.');
-        console.error('Lỗi tải danh sách nhân viên:', error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    setError(null);
+    try {
+      const response = await axios.post(API_PATH() + 'EmployeesList');
+      setEmployees(response.data.$values || []);
+    } catch (error) {
+      setError('Không thể tải danh sách nhân viên. Vui lòng thử lại.');
+      console.error('Lỗi tải danh sách nhân viên:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleEdit = (employee) => {
-    setSelectedEmployee(employee);
+  const handleAddEmployee = async (newEmployee) => {
+    setSubmitting(true);
+    try {
+      const response = await axios.post(API_PATH() + 'CreateEmployees', newEmployee);
+      setEmployees((prev) => [...prev, response.data]); // Thêm nhân viên vào danh sách
+      setSelectedEmployee(null); // Đóng form sau khi thêm
+    } catch (error) {
+      console.error('Lỗi thêm nhân viên:', error);
+      alert('Không thể thêm nhân viên. Vui lòng thử lại.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleCancelEdit = () => {
     setSelectedEmployee(null);
-  };
-
-  const handleDelete = (employeeID) => {
-    if (window.confirm('Bạn có chắc chắn muốn xóa nhân viên này?')) {
-      setSubmitting(true);
-      axios
-        .delete(`http://localhost:5062/Home/EmployeesList/${employeeID}`)
-        .then(() => {
-          setEmployees(employees.filter((employee) => employee.employeeId !== employeeID));
-        })
-        .catch((error) => {
-          console.error('Lỗi xóa nhân viên:', error);
-          alert('Không thể xóa nhân viên. Vui lòng thử lại.');
-        })
-        .finally(() => {
-          setSubmitting(false);
-        });
-    }
-  };
-
-  const handleSubmit = (employee) => {
-    setSubmitting(true);
-    const apiCall = employee.employeeId
-      ? axios.put(`http://localhost:5062/Home/EmployeesList/${employee.employeeId}`, employee)
-      : axios.post('http://localhost:5062/Home/EmployeesList', employee);
-
-    apiCall
-      .then((response) => {
-        if (employee.employeeId) {
-          setEmployees(
-            employees.map((emp) =>
-              emp.employeeId === employee.employeeId ? response.data : emp
-            )
-          );
-        } else {
-          setEmployees([...employees, response.data]);
-        }
-        setSelectedEmployee(null);
-      })
-      .catch((error) => {
-        console.error('Lỗi từ server:', error.response?.data);
-        alert('Không thể thêm hoặc cập nhật nhân viên. Vui lòng thử lại.');
-      })
-      .finally(() => {
-        setSubmitting(false);
-      });
   };
 
   const renderTable = () => {
@@ -106,6 +68,7 @@ const EmployeeList = () => {
               <th>Ngày gia nhập</th>
               <th>Quốc tịch</th>
               <th>Địa chỉ</th>
+              <th>Loại nhân viên</th>
               <th>Hành động</th>
             </tr>
           </thead>
@@ -124,19 +87,10 @@ const EmployeeList = () => {
                 <td>{employee.joiningDate}</td>
                 <td>{employee.nationality}</td>
                 <td>{employee.address}</td>
+                <td>{employee.type?.typeName || 'Không rõ'}</td>
                 <td>
-                  <button
-                    className="btn btn-primary btn-sm mr-2"
-                    onClick={() => handleEdit(employee)}
-                  >
+                  <button className="btn btn-primary btn-sm" onClick={() => setSelectedEmployee(employee)}>
                     Chỉnh sửa
-                  </button>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => handleDelete(employee.employeeId)}
-                    disabled={submitting}
-                  >
-                    Xóa
                   </button>
                 </td>
               </tr>
@@ -149,10 +103,13 @@ const EmployeeList = () => {
 
   return (
     <div className="employee-list-container">
+      <button className="btn btn-success mb-3" onClick={() => setSelectedEmployee({})}>
+        Thêm nhân viên
+      </button>
       {selectedEmployee ? (
         <EmployeeForm
           employee={selectedEmployee}
-          onSubmit={handleSubmit}
+          onSubmit={handleAddEmployee}
           onCancel={handleCancelEdit}
           submitting={submitting}
         />
