@@ -11,7 +11,7 @@ const EmployeeManagement = () => {
 
   // Lấy danh sách nhân viên từ API
   useEffect(() => {
-    axios.get('http://localhost:5238/api/employees')  // URL của API
+    axios.get('http://localhost:5062/Home/EmployeesList')  // URL của API
       .then(response => {
         setEmployees(response.data);  // Lưu dữ liệu nhân viên vào state
       })
