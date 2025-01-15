@@ -4,7 +4,7 @@ import ProjectCard from "../../components/admin/project/ProjectCard";
 import HeaderProject from "../../components/admin/project/HeaderProject";
 import Sidebar from "../../components/admin/SideBar";
 import Navbar from "../../components/admin/Navbar";
-
+import API_PATH from "../../components/common/API_PATH";
 const Dashboard = () => {
   const [projects, setProjects] = useState([]); // State lưu danh sách dự án
   const [loading, setLoading] = useState(false); // State kiểm soát trạng thái loading
@@ -14,9 +14,9 @@ const Dashboard = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:5238/api/projects") // URL API (thay bằng API thật của bạn)
+      .get(API_PATH()+"GetProjects") 
       .then((response) => {
-        setProjects(response.data);
+        setProjects(response.data.$values);
       })
       .catch((error) => {
         console.error("Có lỗi khi lấy danh sách dự án:", error);
