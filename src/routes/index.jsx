@@ -12,6 +12,10 @@ import Notification from "../views/admin/Notification";
 import FAQAccordion from "../views/admin/FAQAccordions"; 
 import LeaveFormView from "../views/admin/LeaveFormView";
 import LeaveRequestsListView from "../views/admin/LeaveRequestsListView";
+import DepartmentsView from "../views/admin/DepartmentsView";
+import DepartmentDetails from "../views/admin/DepartmentDetailsView";
+import CreateDepartment from "../views/admin/CreateDepartment";
+
 const adminRoutes = [
   { path: "/admin", element: <HomeView />, name: "Admin Dashboard" },
   { path: "/admin/calendar", element: <CalendarView />, name: "Calendar View" },
@@ -27,6 +31,9 @@ const adminRoutes = [
   { path: "/admin/faq", element: <FAQAccordion />, name: "FAQ Accordion" }, 
   { path: "/leave-form", element: <LeaveFormView />, name: "Leave Form" }, 
   { path: "/list-leave-request", element: <LeaveRequestsListView />, name: "Leave listlist" }, 
+  { path: "/departments", element: <DepartmentsView />, name: "Derpartment" }, 
+  { path: "/department", element: <DepartmentDetails />, name: "Derpartment details" }, 
+  { path: "/create-department", element: <CreateDepartment />, name: "create new department" }, 
 ];
 
 const Routes = () => {
