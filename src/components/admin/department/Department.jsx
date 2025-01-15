@@ -10,7 +10,7 @@ const Department = ({
   description,
   activeFrom,
   activeTo,
-  employees = [],
+  employees = {},
 }) => {
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -24,7 +24,6 @@ const Department = ({
     // Navigate to the department detail page
     navigate('/department', { state: { departmentId } });
   };
-
   // Hàm gọi API xóa phòng ban
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this department?")) {
@@ -85,10 +84,11 @@ const Department = ({
       {/* Employees */}
       <div className="mb-2">
         <span className="font-medium text-gray-800">Employees:</span>{" "}
-        {employees.length > 0 ? (
+        {
+        employees.length > 0 ? (
           <span className="text-blue-700">{employees.length}</span>
         ) : (
-          <span className="text-red-500">No employees</span>
+          <span className="text-red-500">view details</span>
         )}
       </div>
     </div>

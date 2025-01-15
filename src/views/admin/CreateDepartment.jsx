@@ -58,7 +58,7 @@ function AddDepartmentForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Department Name */}
             <div>
-              <label className="text-lg font-semibold">Department Name</label>
+              <label className=" text-lg font-semibold">Department Name</label>
               <input
                 type="text"
                 className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
@@ -70,7 +70,7 @@ function AddDepartmentForm() {
 
             {/* Description */}
             <div>
-              <label className="text-lg font-semibold">Description</label>
+              <label className=" text-lg font-semibold">Description</label>
               <textarea
                 className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
                 value={description}
@@ -81,7 +81,7 @@ function AddDepartmentForm() {
 
             {/* Active From Date */}
             <div>
-              <label className="text-lg font-semibold">Active From</label>
+              <label className=" text-lg font-semibold">Active From</label>
               <input
                 type="date"
                 className="w-full p-2 mt-2 border border-gray-300 rounded-lg"
@@ -93,7 +93,7 @@ function AddDepartmentForm() {
 
             {/* Active To Date */}
             <div>
-              <label className="text-lg font-semibold">Active To</label>
+              <label className=" text-lg font-semibold">Active To</label>
               <input
                 type="date"
                 className="w-full p-2 mt-2 border border-gray-300 rounded-lg"

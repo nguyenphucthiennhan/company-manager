@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API_PATH from '../../common/API_PATH';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
@@ -27,13 +28,17 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await fetch(`${API_PATH()}DepartmentList`);
-        const data = await response.json();
-        if (data && Array.isArray(data.$values)) {
-          setDepartments(data.$values);
-        } else {
-          console.error('Invalid department data:', data);
-        }
+        axios
+      .post(API_PATH()+"DepartmentList") 
+      .then((response) => {
+        setDepartments(response.data.$values);
+      })
+      .catch((error) => {
+        console.error("Có lỗi khi lấy danh sách dự án:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Tắt trạng thái loading
+      });
       } catch (error) {
         console.error('Error fetching departments:', error);
       }
@@ -41,12 +46,13 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
 
     const fetchEmployeeTypes = async () => {
       try {
-        const response = await fetch(`${API_PATH()}EmployeeTypeList`);
-        const data = await response.json();
-        if (data && Array.isArray(data.$values)) {
-          setEmployeeTypes(data.$values);
+        const response = await axios.get(`${API_PATH()}EmployeeTypeList`);
+        console.log(response.data);
+        
+        if (response.data && Array.isArray(response.data.$values)) {
+          setEmployeeTypes(response.data.$values);
         } else {
-          console.error('Invalid employee type data:', data);
+          console.error('Invalid employee type data:',response.data.$values);
         }
       } catch (error) {
         console.error('Error fetching employee types:', error);
